@@ -1,0 +1,27 @@
+{
+	"name": "instagram-server",
+	"version": "1.0.0",
+	"description": "instagram clone",
+	"main": "server.js",
+	"scripts": {
+		"test": "echo \"Error: no test specified\" && exit 1",
+		"start": "node server.js",
+		"dev": "nodemon server.js"
+	},
+	"author": "Sanskar",
+	"license": "ISC",
+	"dependencies": {
+		"bcrypt": "^5.0.1",
+		"cookie-parser": "^1.4.6",
+		"cors": "^2.8.5",
+		"dotenv": "^11.0.0",
+		"express": "^4.17.2",
+		"express-useragent": "^1.0.15",
+		"jsonwebtoken": "^8.5.1",
+		"moment": "^2.29.1",
+		"mongoose": "^6.1.6",
+		"multer": "^1.4.4",
+		"nanoid": "^3.2.0",
+		"socket.io": "^4.4.1"
+	}
+}
