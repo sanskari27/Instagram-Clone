@@ -1,9 +1,11 @@
 import axios from 'axios';
 
-const baseURL = process.env.REACT_APP_SERVER_URL;
+const PROTOCOL = window.location.protocol;
+const BASE_URL = window.location.hostname;
+const PORT = 9000;
 
 const axiosInstance = axios.create({
-	baseURL: baseURL,
+	baseURL: PROTOCOL + '//' + BASE_URL + ':' + PORT,
 	headers: {
 		'Content-Type': 'application/json',
 	},
