@@ -4,8 +4,10 @@ const PROTOCOL = window.location.protocol;
 const BASE_URL = window.location.hostname;
 const PORT = 9000;
 
+const URL = PROTOCOL + '//' + BASE_URL + ':' + PORT;
+
 const axiosInstance = axios.create({
-	baseURL: PROTOCOL + '//' + BASE_URL + ':' + PORT,
+	baseURL: URL,
 	headers: {
 		'Content-Type': 'application/json',
 	},
