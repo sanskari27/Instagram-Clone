@@ -22,21 +22,22 @@ app.use(express.static(__basedir + 'static/dp'));
 //-----------------------------------------------------------------------------------------
 // const allowlist = [process.env.WEBPAGE_URL];
 
-// const corsOptionsDelegate = (req, callback) => {
-// 	let corsOptions;
+const corsOptionsDelegate = (req, callback) => {
+	let corsOptions;
 
-// 	let isDomainAllowed = allowlist.indexOf(req.header('Origin')) !== -1;
+	// let isDomainAllowed = allowlist.indexOf(req.header('Origin')) !== -1;
 
-// 	if (isDomainAllowed) {
-// 		// Enable CORS for this request
-// 		corsOptions = { origin: true, credentials: true };
-// 	} else {
-// 		// Disable CORS for this request
-// 		corsOptions = { origin: false };
-// 	}
-// 	callback(null, corsOptions);
-// };
-app.use(cors());
+	// if (isDomainAllowed) {
+	// 	// Enable CORS for this request
+	// 	corsOptions = { origin: true, credentials: true };
+	// } else {
+	// 	// Disable CORS for this request
+	// 	corsOptions = { origin: false };
+	// }
+	corsOptions = { origin: true, credentials: true };
+	callback(null, corsOptions);
+};
+app.use(cors(corsOptionsDelegate));
 
 //----------------------------------------------------------------------------------
 app.get('/api', async (req, res) => {
