@@ -20,23 +20,23 @@ app.use(useragent.express());
 app.use(express.static(__basedir + 'static/dp'));
 
 //-----------------------------------------------------------------------------------------
-const allowlist = [process.env.WEBPAGE_URL];
+// const allowlist = [process.env.WEBPAGE_URL];
 
-const corsOptionsDelegate = (req, callback) => {
-	let corsOptions;
+// const corsOptionsDelegate = (req, callback) => {
+// 	let corsOptions;
 
-	let isDomainAllowed = allowlist.indexOf(req.header('Origin')) !== -1;
+// 	let isDomainAllowed = allowlist.indexOf(req.header('Origin')) !== -1;
 
-	if (isDomainAllowed) {
-		// Enable CORS for this request
-		corsOptions = { origin: true, credentials: true };
-	} else {
-		// Disable CORS for this request
-		corsOptions = { origin: false };
-	}
-	callback(null, corsOptions);
-};
-app.use(cors(corsOptionsDelegate));
+// 	if (isDomainAllowed) {
+// 		// Enable CORS for this request
+// 		corsOptions = { origin: true, credentials: true };
+// 	} else {
+// 		// Disable CORS for this request
+// 		corsOptions = { origin: false };
+// 	}
+// 	callback(null, corsOptions);
+// };
+app.use(cors());
 
 //----------------------------------------------------------------------------------
 app.get('/api', async (req, res) => {
@@ -50,8 +50,8 @@ app.use('/profile', require('./route/Profile'));
 app.use('/messenger', require('./route/Messenger'));
 app.use('/images', require('./route/Images'));
 
-const server = app.listen(process.env.PORT || 9000, () =>
-	console.log(`Server running at ${moment.fetchDate()} on port ${process.env.PORT || 9000}`)
+const server = app.listen(process.env.PORT, () =>
+	console.log(`Server running at ${moment.fetchDate()} on port ${process.env.PORT}`)
 );
 
 require('./config/Socket')();
